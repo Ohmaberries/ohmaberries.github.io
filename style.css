@@ -1,0 +1,93 @@
+body {
+    background: linear-gradient(180deg, #e6f7ff 0%, #b3e0ff 100%);
+    font-family: 'Georgia', serif;
+    color: #2c3e50;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Password Screen */
+#password-screen h1 {
+    color: #1a5276;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+#password-screen .hint {
+    font-style: italic;
+    color: #3498db;
+}
+
+#password, button {
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+/* Letter Styling */
+.letter {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.signature {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.5em;
+    color: #1a5276;
+    margin-top: 20px;
+}
+
+/* Interactive Garden */
+.sunflower-garden {
+    margin: 40px 0;
+}
+
+#garden-bed {
+    min-height: 100px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Farm Preview */
+.farm-preview {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.mingkoys {
+    font-size: 1.2em;
+    color: #1a5276;
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+}

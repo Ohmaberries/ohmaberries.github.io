@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For [Her Name] | Our Light Blue Story</title>
+    <meta name="description" content="A love letter to the Filipina who makes sociology sparkle and cats rule the world.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <style>
+        /* Base Styles */
+        :root {
+            --light-blue: #e6f7ff;
+            --main-blue: #3498db;
+        }
+
+        body {
+            background: linear-gradient(180deg, #f0faff 0%, #ccebff 100%);
+            font-family: 'Georgia', serif;
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Password Screen */
+        #password-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        /* Love Letter Container */
+        .love-letter-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(52, 152, 219, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cute Interactions */
+        .floating-heart {
+            position: absolute;
+            animation: float 6s infinite;
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        .cat-emoji {
+            position: fixed;
+            font-size: 40px;
+            animation: jump 2s infinite;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        @keyframes jump {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Secret Message Popup */
+        .secret-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Screen -->
+    <div id="password-screen">
+        <h1 style="font-family: 'Pacifico', cursive; color: var(--main-blue);">🌸 Unlock Your Letter 🌸</h1>
+        <input type="text" id="password" placeholder="What veggie is banned here?">
+        <button onclick="checkPassword()" style="margin-top: 10px;">Open My Heart</button>
+    </div>
+
+    <!-- Love Letter -->
+    <div class="love-letter-container">
+        <h2 style="text-align: center; color: var(--main-blue); margin-bottom: 30px;">To My Future Sunshine,</h2>
+        <!-- PASTE YOUR FINAL LETTER HERE -->
+    </div>
+
+    <!-- Interactive Elements -->
+    <div class="cat-emoji" style="bottom: 20px; left: 5%;">🐾</div>
+    <div class="cat-emoji" style="top: 20px; right: 10%;">🐱</div>
+    <div class="floating-heart" style="top: 20%; left: 15%;">💙</div>
+    <div class="floating-heart" style="top: 70%; right: 20%;">💌</div>
+
+    <!-- Hidden Surprises -->
+    <div class="secret-message" id="secretMessage">
+        <p>You found a Mingkoy secret! 🐈<br>Someday we'll fill our farm with 10x this chaos.</p>
+        <button onclick="document.getElementById('secretMessage').style.display = 'none'">Close</button>
+    </div>
+
+    <script>
+        // Password Check
+        function checkPassword() {
+            if (document.getElementById('password').value.toLowerCase() === 'bittermelon') {
+                document.getElementById('password-screen').style.display = 'none';
+                createAnimations();
+            } else {
+                alert('Not quite, Mahal! Try again ❤️');
+            }
+        }
+
+        // Add Interactive Magic
+        function createAnimations() {
+            // Clickable Hearts
+            document.querySelectorAll('.floating-heart').forEach(heart => {
+                heart.addEventListener('click', () => {
+                    alert("You've always had my heart ❤️");
+                });
+            });
+
+            // Cat Click Surprise
+            document.querySelectorAll('.cat-emoji').forEach(cat => {
+                cat.addEventListener('click', () => {
+                    document.getElementById('secretMessage').style.display = 'block';
+                });
+            });
+
+            // Typewriter Effect for Letter (Optional)
+            // Add if you want text to appear animated!
+        }
+
+        // Falling Hearts Background (Optional)
+        // Can add more complex animations if desired
+    </script>
+</body>
+</html>
