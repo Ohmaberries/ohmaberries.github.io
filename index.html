@@ -1,77 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luiz & Lalaine’s Love Story</title>
-    <meta name="description" content="A romantic website for Luiz and Lalaine, filled with love letters, shared goals, and dreams.">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;700&display=swap">
+    <title>Luiz & Lalaine: Our Kwento</title>
+    <meta name="description" content="A love letter and shared dreams, inspired by Filipino romance and light blue skies.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Password Screen -->
-    <div id="password-screen" class="container">
-        <h1>🌸 For My Mahal, Lalaine 🌸</h1>
-        <p class="hint">Hint: "The veggie I’ll never serve"</p>
-        <input type="text" id="password" placeholder="Enter the magic word...">
-        <button onclick="checkPassword()">Unlock</button>
+    <!-- Password Screen (Original Style) -->
+    <div id="password-screen" class="password-screen">
+        <div class="password-box">
+            <h1>💙 Magandang Araw, Mahal 💙</h1>
+            <p class="hint">Hint: "Ang gulay na ayaw mo"</p>
+            <input type="text" id="password" placeholder="Ano ang sagot...">
+            <button onclick="checkPassword()">Buksan ang Puso Ko</button>
+        </div>
+        <div class="sampaguita-border"></div>
     </div>
 
-    <!-- Content (Hidden Initially) -->
-    <div id="content" class="hidden container">
-        <!-- Love Letter -->
-        <div class="letter">
-            <h2>To My Future Sunshine,</h2>
-           Even though we just met, it feels like I’ve known you for many years, and I think that’s why we match so beautifully—even from thousands of miles away. Who knows, maybe we met in a past life on a tiny farm :)  Every time you talk about your goals, all I know is that you will accomplish them all and bring your five Mingkoys (who clearly run your world) with you. Your dream of a tiny farm where you can grow all types of plants and vegetables and heal wounded stray animals, or how you light up when planning your sociology projects to help others, reminds me that love isn’t just a feeling. It’s the quiet hope of building a life with someone special. And something tells me you are very special.</p>
+    <!-- Main Content -->
+    <div id="content" class="hidden">
+        <!-- Love Letter (Parchment Frame) -->
+        <section class="letter-frame">
+            <div class="parchment">
+                <h2>Sa Aking Minamahal na Lalaine,</h2>
+                <p>[Even though we just met, it feels like I’ve known you for many years, and I think that’s why we match so beautifully—even from thousands of miles away. Who knows, maybe we met in a past life on a tiny farm :)  Every time you talk about your goals, all I know is that you will accomplish them all and bring your five Mingkoys (who clearly run your world) with you. Your dream of a tiny farm where you can grow all types of plants and vegetables and heal wounded stray animals, or how you light up when planning your sociology projects to help others, reminds me that love isn’t just a feeling. It’s the quiet hope of building a life with someone special. And something tells me you are very special.</p>
 
             <p>I imagine one day in the Farm: a little house painted light blue, like the sky after a monsoon, with the Mingkoys napping in a sunbeam while we argue over whether Swiss goats or Hong Kong street cats have better personalities. But more than the places, I crave the *moments*—the someday-morning when I’ll bring you coffee (no bitter melon in sight, promise) and watch you scribble plans for a community garden or laugh at your phone because the Mingkoys knocked over another plant. You’re the kind of person who turns dreams into action, and if I’m lucky enough to hopefully one day stand beside you in the future, I’ll spend every day making sure you never doubt how extraordinary you are.</p>
 
-            <p>Until then, I’ll keep saving your voice notes like secrets and wondering how your smile looks in sunlight instead of pixels.
-            <p class="signature">— Luiz</p>
-        </div>
+            <p>Until then, I’ll keep saving your voice notes like secrets and wondering how your smile looks in sunlight instead of pixels.]</p>
+                <div class="seal"></div>
+                <p class="signature">— Luiz</p>
+            </div>
+            <div class="parol-decoration"></div>
+        </section>
 
-        <!-- Goals List -->
-        <div class="goals-list">
-            <h2>Luiz and Lalaine’s Goal List 💌</h2>
-            <ul>
-                <li>
-                    <input type="checkbox" id="goal1">
-                    <label for="goal1">Visit Switzerland and chase alpine sunsets together.</label>
-                    <span class="heart">❤️</span>
-                </li>
-                <li>
-                    <input type="checkbox" id="goal2">
-                    <label for="goal2">Build our light blue farm with sunflowers and cats.</label>
-                    <span class="heart">❤️</span>
-                </li>
-                <li>
-                    <input type="checkbox" id="goal3">
-                    <label for="goal3">Live together in Hong Kong and explore its neon streets.</label>
-                    <span class="heart">❤️</span>
-                </li>
-                <li>
-                    <input type="checkbox" id="goal4">
-                    <label for="goal4">Cook adobo together (no bitter melon, promise!).</label>
-                    <span class="heart">❤️</span>
-                </li>
-                <li>
-                    <input type="checkbox" id="goal5">
-                    <label for="goal5">Write a book about our love story.</label>
-                    <span class="heart">❤️</span>
-                </li>
-            </ul>
-            <button onclick="addNewGoal()">Add a New Goal 🌟</button>
-        </div>
-    </div>
-
-    <!-- Floating Hearts Background -->
-    <div class="floating-hearts">
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
-        <div class="heart">❤️</div>
+        <!-- Goals List (Filipino-Inspired Box) -->
+        <section class="goals-frame">
+            <div class="goals-box">
+                <h2>Mga Pangarap Natin 💭</h2>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="goal1">
+                        <label for="goal1">Maglakbay sa Switzerland na magkahawak ang kamay</label>
+                        <div class="checkmark"></div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="goal2">
+                        <label for="goal2">Magtayo ng bahay-kubo na may taniman ng sunflower</label>
+                        <div class="checkmark"></div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="goal3">
+                        <label for="goal3">Manirahan sa Hong Kong at mag-food trip sa night market</label>
+                        <div class="checkmark"></div>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="goal4">
+                        <label for="goal4">Magluto ng adobo nang sabay (walang ampalaya!)</label>
+                        <div class="checkmark"></div>
+                    </li>
+                </ul>
+                <button onclick="addNewGoal()">Magdagdag ng Pangarap 🌠</button>
+            </div>
+            <div class="banig-pattern"></div>
+        </section>
     </div>
 
     <script src="script.js"></script>
