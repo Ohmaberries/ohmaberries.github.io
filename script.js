@@ -8,22 +8,16 @@ function checkPassword() {
     }
 }
 
-function plantSunflower() {
-    const garden = document.getElementById('garden-bed');
-    const sunflower = document.createElement('img');
-    sunflower.src = 'assets/sunflower.png';
-    sunflower.style.width = '50px';
-    sunflower.style.height = '50px';
-    sunflower.style.animation = 'grow 0.5s ease-in';
-    garden.appendChild(sunflower);
-}
-
-// Add CSS animation for sunflowers
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes grow {
-        0% { transform: scale(0); }
-        100% { transform: scale(1); }
+function addNewGoal() {
+    const newGoal = prompt("What’s your new goal, Mahal?");
+    if (newGoal) {
+        const goalsList = document.querySelector('.goals-list ul');
+        const newItem = document.createElement('li');
+        newItem.innerHTML = `
+            <input type="checkbox" id="goal${goalsList.children.length + 1}">
+            <label for="goal${goalsList.children.length + 1}">${newGoal}</label>
+            <span class="heart">❤️</span>
+        `;
+        goalsList.appendChild(newItem);
     }
-`;
-document.head.appendChild(style);
+}
