@@ -1,16 +1,11 @@
+/* General Styles */
 body {
-    background: linear-gradient(180deg, #e6f7ff 0%, #b3e0ff 100%);
-    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #e6f7ff, #ffebf7);
+    font-family: 'Montserrat', sans-serif;
     color: #2c3e50;
-    line-height: 1.6;
     margin: 0;
-    padding: 20px;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 .hidden {
@@ -18,18 +13,33 @@ body {
 }
 
 /* Password Screen */
-#password-screen h1 {
+.password-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.password-screen h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
     color: #1a5276;
-    font-size: 2.5em;
     margin-bottom: 10px;
 }
 
-#password-screen .hint {
+.password-screen .hint {
     font-style: italic;
     color: #3498db;
 }
 
-#password, button {
+.password-screen input[type="text"] {
     padding: 10px;
     margin: 10px;
     border: 2px solid #3498db;
@@ -37,57 +47,160 @@ body {
     font-size: 1.1em;
 }
 
-button {
+.password-screen button {
+    padding: 10px 20px;
     background: #3498db;
     color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-/* Letter Styling */
-.letter {
+.password-screen button:hover {
+    background: #2980b9;
+}
+
+/* Main Content */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.1);
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    color: #1a5276;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #3498db;
+    margin: 10px 0 0;
+}
+
+/* Card Design */
+.card {
     background: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
-.signature {
-    font-family: 'Brush Script MT', cursive;
+/* Love Letter */
+.letter .card h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5em;
+    color: #1a5276;
+    margin-bottom: 20px;
+}
+
+.letter .card p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.letter .card .signature {
+    font-family: 'Pacifico', cursive;
     font-size: 1.5em;
     color: #1a5276;
     margin-top: 20px;
+    text-align: right;
 }
 
-/* Interactive Garden */
-.sunflower-garden {
-    margin: 40px 0;
-}
-
-#garden-bed {
-    min-height: 100px;
-    margin: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-/* Farm Preview */
-.farm-preview {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 15px;
-}
-
-.mingkoys {
-    font-size: 1.2em;
+/* Goals List */
+.goals-list .card h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
     color: #1a5276;
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
+.goals-list .card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.goals-list .card li {
+    margin: 15px 0;
+    font-size: 1.1em;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+}
+
+.goals-list .card input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.goals-list .card label {
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.goals-list .card .heart {
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.goals-list .card input[type="checkbox"]:checked ~ .heart {
+    opacity: 1;
+}
+
+.goals-list .card button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.goals-list .card button:hover {
+    background: #2980b9;
+}
+
+/* Floating Hearts */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-hearts .heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff6b6b;
+    animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    50% { transform: translateY(-20px) rotate(20deg); opacity: 1; }
+    100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
