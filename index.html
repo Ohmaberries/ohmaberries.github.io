@@ -3,63 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luiz & Lalaine’s Love Story</title>
-    <meta name="description" content="A timeless love letter and shared dreams.">
+    <title>Luiz & Lalaine's Eternal Love</title>
+    <meta name="description" content="A timeless digital love letter with shared dreams and goals">
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content="Luiz & Lalaine's Love Story">
+    <meta property="og:description" content="Our journey through love and shared dreams">
+    <meta property="og:image" content="https://luizwiththez.com/assets/love-preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://luizwiththez.com">
+    
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;700&display=swap">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Password Screen (Light Blue Theme) -->
-    <div id="password-screen" class="password-screen">
-        <h1>💙 For My Mahal 💙</h1>
-        <p class="hint">Hint: "The veggie I’ll never cook"</p>
-        <input type="text" id="password" placeholder="Enter our secret word...">
-        <button onclick="checkPassword()">Unlock Our Story</button>
+    <div id="password-screen">
+        <div class="password-container">
+            <div class="floral-border"></div>
+            <h1>💙 Our Secret Garden 💙</h1>
+            <p class="hint">Hint: The vegetable banned from our kitchen</p>
+            <input type="password" id="password" placeholder="Whisper the magic word...">
+            <button onclick="checkPassword()">Unlock Forever</button>
+        </div>
     </div>
 
     <!-- Main Content -->
-    <div id="content" class="hidden">
-        <!-- Love Letter in Vintage Frame -->
-        <div class="letter-frame">
-            <div class="letter">
-                <h2>To My Sunshine, Lalaine</h2>
-                <p>Even though we just met, it feels like I’ve known you for many years, and I think that’s why we match so beautifully—even from thousands of miles away. Who knows, maybe we met in a past life on a tiny farm :)  Every time you talk about your goals, all I know is that you will accomplish them all and bring your five Mingkoys (who clearly run your world) with you. Your dream of a tiny farm where you can grow all types of plants and vegetables and heal wounded stray animals, or how you light up when planning your sociology projects to help others, reminds me that love isn’t just a feeling. It’s the quiet hope of building a life with someone special. And something tells me you are very special.</p>
-
-            <p>I imagine one day in the Farm: a little house painted light blue, like the sky after a monsoon, with the Mingkoys napping in a sunbeam while we argue over whether Swiss goats or Hong Kong street cats have better personalities. But more than the places, I crave the *moments*—the someday-morning when I’ll bring you coffee (no bitter melon in sight, promise) and watch you scribble plans for a community garden or laugh at your phone because the Mingkoys knocked over another plant. You’re the kind of person who turns dreams into action, and if I’m lucky enough to hopefully one day stand beside you in the future, I’ll spend every day making sure you never doubt how extraordinary you are.</p>
-
-            <p>Until then, I’ll keep saving your voice notes like secrets and wondering how your smile looks in sunlight instead of pixels.</p>
-                <p class="signature">Forever Yours,<br>Luiz</p>
+    <main id="content" class="hidden">
+        <!-- Love Letter Section -->
+        <section class="love-letter">
+            <div class="vintage-paper">
+                <h2>My Dearest Lalaine,</h2>
+                <div class="letter-content">
+                    [PASTE YOUR LOVE LETTER HERE]
+                </div>
+                <div class="seal"></div>
+                <p class="signature">Yours eternally,<br>Luiz</p>
             </div>
-        </div>
+        </section>
 
-        <!-- Goals List in Elegant Card -->
-     <div class="goals-card">
-    <h2>Our Dreams Together 🌸</h2>
-    <ul>
-        <!-- Goals will be added here -->
-    </ul>
-    <button onclick="addNewGoal()">Add New Dream</button>
-</div>
-                <li>
-                    <input type="checkbox" id="goal1">
-                    <label for="goal1">Switzerland sunsets &amp; Swiss chocolate tastings</label>
-                    <span class="heart">❤️</span>
-                </li>
-                <li>
-                    <input type="checkbox" id="goal2">
-                    <label for="goal2">Build our light blue farm with 5 cats</label>
-                    <span class="heart">❤️</span>
-                </li>
-                <li>
-                    <input type="checkbox" id="goal3">
-                    <label for="goal3">Hong Kong adventures and egg tart hunts</label>
-                    <span class="heart">❤️</span>
-                </li>
-            </ul>
-            <button onclick="addNewGoal()">Add New Dream</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+        <!-- Shared Goals -->
+        <section class="shared-dreams">
+            <div class="dreams-container">
+                <h2>Our Bucket List 🌸</h2>
+                <ul class="goals-list">
+                    <!-- Goals will auto-populate from storage -->
+                </ul>
+                <button class="add-goal" onclick="addNewGoal()">+ Add New Dream</button>
+            </div>
+        </section>
+    </main>
