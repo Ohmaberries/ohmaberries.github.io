@@ -1,53 +1,59 @@
+// Password System
 function checkPassword() {
-    const password = document.getElementById('password').value.toLowerCase();
-    if (password === 'bittermelon') {
-        document.getElementById('password-screen').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-        loadSavedGoals();
+    const password = document.getElementById('password').value.toLowerCase().trim();
+    if(password === 'bittermelon') {
+        document.getElementById('password-screen').remove();
+        document.getElementById('content').classList.remove('hidden');
+        loadGoals();
     } else {
-        alert('Incorrect! Try again, Mahal ❤️');
+        alert('Incorrect, my love ❤️ Try again!');
+        document.getElementById('password').value = '';
     }
 }
 
+// Goal Storage System
+const GOAL_STORAGE_KEY = 'our_eternal_goals';
+
 function saveGoals() {
-    const goals = [];
-    document.querySelectorAll('.goals-card label').forEach(label => {
-        goals.push(label.textContent);
-    });
-    localStorage.setItem('ourGoals', JSON.stringify(goals));
+    const goals = Array.from(document.querySelectorAll('.goals-list label'))
+                     .map(label => label.textContent);
+    localStorage.setItem(GOAL_STORAGE_KEY, JSON.stringify(goals));
 }
 
-function loadSavedGoals() {
-    const savedGoals = JSON.parse(localStorage.getItem('ourGoals')) || [];
-    const list = document.querySelector('.goals-card ul');
-    list.innerHTML = '';
+function loadGoals() {
+    const savedGoals = JSON.parse(localStorage.getItem(GOAL_STORAGE_KEY)) || [];
+    const list = document.querySelector('.goals-list');
     
-    savedGoals.forEach((goal, index) => {
-        const newItem = document.createElement('li');
-        newItem.innerHTML = `
-            <input type="checkbox" id="goal${index + 1}">
-            <label for="goal${index + 1}">${goal}</label>
+    list.innerHTML = savedGoals.map((goal, index) => `
+        <li>
+            <input type="checkbox" id="goal-${index}">
+            <label for="goal-${index}">${goal}</label>
             <span class="heart">❤️</span>
-        `;
-        list.appendChild(newItem);
-    });
+        </li>
+    `).join('');
 }
 
 function addNewGoal() {
-    const newGoal = prompt("What’s our new dream?");
-    if (newGoal) {
-        const list = document.querySelector('.goals-card ul');
-        const newItem = document.createElement('li');
-        const goalId = list.children.length + 1;
+    const newGoal = prompt("What new dream should we add?");
+    if(newGoal) {
+        const list = document.querySelector('.goals-list');
+        const newId = list.children.length;
         
-        newItem.innerHTML = `
-            <input type="checkbox" id="goal${goalId}">
-            <label for="goal${goalId}">${newGoal}</label>
-            <span class="heart">❤️</span>
+        list.innerHTML += `
+            <li>
+                <input type="checkbox" id="goal-${newId}">
+                <label for="goal-${newId}">${newGoal}</label>
+                <span class="heart">❤️</span>
+            </li>
         `;
-        list.appendChild(newItem);
         saveGoals();
     }
 }
 
-window.addEventListener('load', loadSavedGoals);
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    if(window.location.pathname !== '/') {
+        document.getElementById('content').classList.add('hidden');
+        document.getElementById('page-404').classList.remove('hidden');
+    }
+});
