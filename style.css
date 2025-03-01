@@ -1,101 +1,136 @@
-/* Core Styles */
-body {
-    background: #e6f7ff;
-    font-family: 'Playfair Display', serif;
-    margin: 0;
-    line-height: 1.6;
+:root {
+    --light-blue: #e6f7ff;
+    --deep-blue: #1a5276;
+    --gold-accent: #ffd700;
+    --soft-shadow: 0 4px 15px rgba(26, 82, 118, 0.1);
 }
 
-/* Password Screen */
-.password-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.95);
+/* Password Screen (Light Blue Redesign) */
+#password-screen {
+    background: linear-gradient(135deg, var(--light-blue), #b3e0ff);
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
 }
 
-.password-screen h1 {
+.password-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: var(--soft-shadow);
+}
+
+.floral-border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%231a5276" opacity="0.1" d="M50 0Q40 15 30 0 20 15 10 0 0 15-10 0v100h120V0Q100 15 90 0 80 15 70 0 60 15 50 0z"/></svg>');
+    pointer-events: none;
+}
+
+#password-screen h1 {
     font-family: 'Pacifico', cursive;
-    color: #1a5276;
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    color: var(--deep-blue);
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.password-screen input {
+#password-screen input {
+    width: 100%;
     padding: 12px;
-    border: 2px solid #3498db;
+    margin: 1rem 0;
+    border: 2px solid var(--deep-blue);
     border-radius: 8px;
-    font-size: 1em;
-    margin: 10px;
+    font-size: 1rem;
 }
 
-.password-screen button {
-    background: #3498db;
+#password-screen button {
+    background: var(--deep-blue);
     color: white;
-    padding: 12px 24px;
+    width: 100%;
+    padding: 12px;
     border: none;
     border-radius: 8px;
+    font-family: 'Playfair Display';
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
 }
 
-.password-screen button:hover {
-    background: #2980b9;
+#password-screen button:hover {
+    background: #14415c;
+    transform: translateY(-2px);
 }
 
-/* Love Letter Frame */
-.letter-frame {
+/* Love Letter Design */
+.vintage-paper {
+    background: #fffaf0;
+    padding: 2rem;
+    border: 3px solid var(--deep-blue);
+    border-radius: 0 30px 0 30px;
     max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
+    margin: 2rem auto;
+    position: relative;
+    box-shadow: var(--soft-shadow);
+}
+
+.seal {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    width: 60px;
+    height: 60px;
+    background: var(--gold-accent);
+    clip-path: circle(50% at 50% 50%);
+}
+
+/* Goals List Redesign */
+.shared-dreams {
+    background: rgba(230, 247, 255, 0.5);
+    padding: 2rem 0;
+}
+
+.dreams-container {
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(52, 152, 219, 0.1);
-}
-
-.letter h2 {
-    font-family: 'Pacifico', cursive;
-    color: #1a5276;
-    border-bottom: 2px dashed #3498db;
-    padding-bottom: 10px;
-}
-
-.signature {
-    font-family: 'Pacifico', cursive;
-    color: #1a5276;
-    margin-top: 20px;
-    text-align: right;
-}
-
-/* Goals Card */
-.goals-card {
     max-width: 500px;
-    margin: 30px auto;
-    padding: 20px;
-    background: white;
+    margin: 0 auto;
+    padding: 1.5rem;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(52, 152, 219, 0.1);
+    box-shadow: var(--soft-shadow);
 }
 
-.goals-card h2 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
+.goals-list {
+    list-style: none;
+    padding: 0;
 }
 
-.goals-card li {
-    margin: 10px 0;
-    padding: 8px;
-    font-size: 0.95em;
+.goals-list li {
+    background: var(--light-blue);
+    margin: 0.8rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-.goals-card button {
-    padding: 8px 16px;
-    font-size: 0.9em;
+.add-goal {
+    background: var(--deep-blue)!important;
+    margin-top: 1.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .password-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .vintage-paper {
+        margin: 1rem;
+        padding: 1rem;
+    }
 }
