@@ -1,59 +1,48 @@
 // Password System
 function checkPassword() {
-    const password = document.getElementById('password').value.toLowerCase().trim();
+    const password = document.getElementById('passwordInput').value.toLowerCase().trim();
+    const errorElement = document.getElementById('errorMessage');
+    
     if(password === 'bittermelon') {
-        document.getElementById('password-screen').remove();
-        document.getElementById('content').classList.remove('hidden');
+        // Hide password screen
+        document.getElementById('password-screen').style.display = 'none';
+        // Show content
+        document.getElementById('mainContent').classList.remove('hidden');
+        // Load goals
         loadGoals();
     } else {
-        alert('Incorrect, my love ❤️ Try again!');
-        document.getElementById('password').value = '';
+        // Show error
+        errorElement.classList.remove('hidden');
+        // Clear input
+        document.getElementById('passwordInput').value = '';
+        // Shake animation
+        errorElement.style.animation = 'shake 0.5s';
+        setTimeout(() => errorElement.style.animation = '', 500);
     }
 }
 
-// Goal Storage System
-const GOAL_STORAGE_KEY = 'our_eternal_goals';
-
-function saveGoals() {
-    const goals = Array.from(document.querySelectorAll('.goals-list label'))
-                     .map(label => label.textContent);
-    localStorage.setItem(GOAL_STORAGE_KEY, JSON.stringify(goals));
-}
-
+// Goal System
 function loadGoals() {
-    const savedGoals = JSON.parse(localStorage.getItem(GOAL_STORAGE_KEY)) || [];
-    const list = document.querySelector('.goals-list');
-    
-    list.innerHTML = savedGoals.map((goal, index) => `
+    const goals = JSON.parse(localStorage.getItem('ourGoals')) || [];
+    const list = document.getElementById('goalsList');
+    list.innerHTML = goals.map((goal, index) => `
         <li>
-            <input type="checkbox" id="goal-${index}">
-            <label for="goal-${index}">${goal}</label>
+            <input type="checkbox" id="goal${index}">
+            <label for="goal${index}">${goal}</label>
             <span class="heart">❤️</span>
         </li>
     `).join('');
 }
 
 function addNewGoal() {
-    const newGoal = prompt("What new dream should we add?");
-    if(newGoal) {
-        const list = document.querySelector('.goals-list');
-        const newId = list.children.length;
-        
-        list.innerHTML += `
-            <li>
-                <input type="checkbox" id="goal-${newId}">
-                <label for="goal-${newId}">${newGoal}</label>
-                <span class="heart">❤️</span>
-            </li>
-        `;
-        saveGoals();
+    const goal = prompt("What new dream should we add?");
+    if(goal) {
+        const goals = JSON.parse(localStorage.getItem('ourGoals')) || [];
+        goals.push(goal);
+        localStorage.setItem('ourGoals', JSON.stringify(goals));
+        loadGoals();
     }
 }
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    if(window.location.pathname !== '/') {
-        document.getElementById('content').classList.add('hidden');
-        document.getElementById('page-404').classList.remove('hidden');
-    }
-});
+// Initial load
+window.onload = loadGoals;
