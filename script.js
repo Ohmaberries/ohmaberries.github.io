@@ -9,7 +9,10 @@ const firebaseConfig = {
 };
 
 const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+console.log("Firebase initialized:", firebase.app().name);
+db.collection('goals').add({ text: "Test Goal" })
+  .then(() => console.log("Test goal added successfully!"))
+  .catch(error => console.error("Error adding test goal:", error));const db = firebase.firestore();
 
 // Password System
 function checkPassword() {
