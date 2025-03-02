@@ -3,7 +3,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBmQADVxAIX5jJeDmOWUc47_Tnsy_vrpYg",
   authDomain: "luiz-lalaine-goals-b49e6.firebaseapp.com",
   projectId: "luiz-lalaine-goals-b49e6",
-  storageBucket: "luiz-lalaine-goals-b49e6.firebasestorage.app",
+  storageBucket: "luiz-lalaine-goals-b49e6.appspot.com",
   messagingSenderId: "571844583451",
   appId: "1:571844583451:web:cc400d53a8d317ef0d98be"
 };
