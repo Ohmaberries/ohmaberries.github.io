@@ -1,11 +1,11 @@
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY_HERE",
-  authDomain: "PASTE_YOUR_AUTH_DOMAIN_HERE",
-  projectId: "PASTE_YOUR_PROJECT_ID_HERE",
-  storageBucket: "PASTE_STORAGE_BUCKET_HERE",
-  messagingSenderId: "PASTE_SENDER_ID_HERE",
-  appId: "PASTE_APP_ID_HERE"
+  apiKey: "AIzaSyBmQADVxAIX5jJeDmOWUc47_Tnsy_vrpYg",
+  authDomain: "luiz-lalaine-goals-b49e6.firebaseapp.com",
+  projectId: "luiz-lalaine-goals-b49e6",
+  storageBucket: "luiz-lalaine-goals-b49e6.firebasestorage.app",
+  messagingSenderId: "571844583451",
+  appId: "1:571844583451:web:cc400d53a8d317ef0d98be"
 };
 
 const app = firebase.initializeApp(firebaseConfig);
