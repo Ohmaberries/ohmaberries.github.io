@@ -1,48 +1,43 @@
-// Password System
-function checkPassword() {
-    const password = document.getElementById('passwordInput').value.toLowerCase().trim();
-    const errorElement = document.getElementById('errorMessage');
-    
-    if(password === 'bittermelon') {
-        // Hide password screen
-        document.getElementById('password-screen').style.display = 'none';
-        // Show content
-        document.getElementById('mainContent').classList.remove('hidden');
-        // Load goals
-        loadGoals();
-    } else {
-        // Show error
-        errorElement.classList.remove('hidden');
-        // Clear input
-        document.getElementById('passwordInput').value = '';
-        // Shake animation
-        errorElement.style.animation = 'shake 0.5s';
-        setTimeout(() => errorElement.style.animation = '', 500);
-    }
+// Updated Goal System
+function saveGoals() {
+    const goals = Array.from(document.querySelectorAll('.goals-list li')).map(li => {
+        return li.querySelector('label').textContent;
+    });
+    localStorage.setItem('ourGoals', JSON.stringify(goals));
 }
 
-// Goal System
 function loadGoals() {
     const goals = JSON.parse(localStorage.getItem('ourGoals')) || [];
     const list = document.getElementById('goalsList');
-    list.innerHTML = goals.map((goal, index) => `
+    list.innerHTML = goals.map((goal) => `
         <li>
-            <input type="checkbox" id="goal${index}">
-            <label for="goal${index}">${goal}</label>
-            <span class="heart">❤️</span>
+            <input type="checkbox">
+            <label>${goal}</label>
+            <button class="delete-btn" onclick="deleteGoal(this)">Delete</button>
         </li>
     `).join('');
 }
 
-function addNewGoal() {
-    const goal = prompt("What new dream should we add?");
-    if(goal) {
-        const goals = JSON.parse(localStorage.getItem('ourGoals')) || [];
-        goals.push(goal);
-        localStorage.setItem('ourGoals', JSON.stringify(goals));
-        loadGoals();
-    }
+function deleteGoal(button) {
+    const listItem = button.closest('li');
+    listItem.style.animation = 'fadeOut 0.3s ease';
+    setTimeout(() => {
+        listItem.remove();
+        saveGoals();
+    }, 300);
 }
 
-// Initial load
-window.onload = loadGoals;
+function addNewGoal() {
+    const goal = prompt("What's our new dream?");
+    if(goal) {
+        const list = document.getElementById('goalsList');
+        const newItem = document.createElement('li');
+        newItem.innerHTML = `
+            <input type="checkbox">
+            <label>${goal}</label>
+            <button class="delete-btn" onclick="deleteGoal(this)">Delete</button>
+        `;
+        list.appendChild(newItem);
+        saveGoals();
+    }
+}
