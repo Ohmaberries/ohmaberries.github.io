@@ -1,5 +1,6 @@
 // Initialize Firebase
 const firebaseConfig = {
+  const firebaseConfig = {
   apiKey: "AIzaSyBmQADVxAIX5jJeDmOWUc47_Tnsy_vrpYg",
   authDomain: "luiz-lalaine-goals-b49e6.firebaseapp.com",
   projectId: "luiz-lalaine-goals-b49e6",
