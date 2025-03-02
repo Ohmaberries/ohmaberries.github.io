@@ -4,53 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luiz & Lalaine's Love Story</title>
-    <meta name="description" content="Our eternal love and shared dreams">
-    
-    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;700&display=swap">
-    <link rel="icon" href="assets/heart.png">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Password Page Styles */
+        .password-page {
+            background: linear-gradient(135deg, #e6f7ff, #b3e0ff);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .password-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(26, 82, 118, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .password-box h1 {
+            font-family: 'Pacifico', cursive;
+            color: #1a5276;
+            margin-bottom: 1rem;
+        }
+
+        #passwordInput {
+            width: 100%;
+            padding: 12px;
+            margin: 1rem 0;
+            border: 2px solid #1a5276;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        /* Main Content (Hidden Initially) */
+        .main-content {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Love Letter Design */
+        .love-letter {
+            background: #fffaf0;
+            padding: 2rem;
+            border-radius: 0 30px 0 30px;
+            border: 3px solid #1a5276;
+            box-shadow: 15px 15px 30px rgba(26, 82, 118, 0.1);
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .love-letter:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 60px;
+            height: 60px;
+            background: #ffd700;
+            clip-path: circle(50% at 50% 50%);
+        }
+
+        /* Goals List Design */
+        .goals-section {
+            background: #f0f8ff;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .goals-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .goals-list li {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Animations */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+    </style>
 </head>
 <body>
-    <!-- Password Screen -->
-    <div id="password-screen">
-        <div class="password-container">
-            <img src="assets/heart.png" class="floating-heart" alt="Golden Heart">
-            <h1>💙 Unlock Our Story 💙</h1>
-            <input type="password" 
-                   id="passwordInput" 
-                   placeholder="Our secret word..."
-                   onkeyup="if(event.key === 'Enter') checkPassword()">
-            <button onclick="checkPassword()">Open My Heart</button>
-            <p id="errorMessage" class="hidden">❌ Try again, mahal!</p>
+    <!-- Password Page -->
+    <div class="password-page">
+        <div class="password-box">
+            <h1>💖 Unlock Our Story</h1>
+            <input type="password" id="passwordInput" placeholder="Our secret code...">
+            <button onclick="checkPassword()" style="
+                background: #1a5276;
+                color: white;
+                padding: 12px 30px;
+                border: none;
+                border-radius: 8px;
+                margin-top: 1rem;
+                cursor: pointer;
+            ">Open My Heart</button>
+            <p id="errorMessage" style="color: red; display: none; margin-top: 1rem;">❌ Try again, mahal!</p>
         </div>
     </div>
 
     <!-- Main Content -->
-    <main id="mainContent" class="hidden">
+    <div class="main-content">
         <!-- Love Letter -->
-        <section class="love-letter">
-            <div class="letter-frame">
-                <h2>My Dearest Lalaine,</h2>
-                <div class="letter-content">
-                    [PASTE YOUR LOVE LETTER HERE]
-                </div>
-                <p class="signature">Forever yours,<br>Luiz</p>
-            </div>
-        </section>
+        <div class="love-letter">
+            <h2 style="font-family: 'Pacifico', cursive; color: #1a5276;">My Dearest Lalaine,</h2>
+            <div class="letter-content">
+               Even though we just met, it feels like I’ve known you for many years, and I think that’s why we match so beautifully—even from thousands of miles away. Who knows, maybe we met in a past life on a tiny farm :)  Every time you talk about your goals, all I know is that you will accomplish them all and bring your five Mingkoys (who clearly run your world) with you. Your dream of a tiny farm where you can grow all types of plants and vegetables and heal wounded stray animals, or how you light up when planning your sociology projects to help others, reminds me that love isn’t just a feeling. It’s the quiet hope of building a life with someone special. And something tells me you are very special.</p>
 
-        <!-- Goals List -->
-        <section class="goals-section">
-            <div class="goals-box">
-                <h2>Our Shared Dreams 🌸</h2>
-                <ul id="goalsList"></ul>
-                <button onclick="addNewGoal()">+ Add New Dream</button>
-            </div>
-        </section>
-    </main>
+            <p>I imagine one day in the Farm: a little house painted light blue, like the sky after a monsoon, with the Mingkoys napping in a sunbeam while we argue over whether Swiss goats or Hong Kong street cats have better personalities. But more than the places, I crave the *moments*—the someday-morning when I’ll bring you coffee (no bitter melon in sight, promise) and watch you scribble plans for a community garden or laugh at your phone because the Mingkoys knocked over another plant. You’re the kind of person who turns dreams into action, and if I’m lucky enough to hopefully one day stand beside you in the future, I’ll spend every day making sure you never doubt how extraordinary you are.</p>
 
-    <script src="script.js"></script>
+            <p>Until then, I’ll keep saving your voice notes like secrets and wondering how your smile looks in sunlight instead of pixels.
+                <p>From the moment we first spoke, I knew you were someone special...</p>
+            </div>
+            <p style="
+                font-family: 'Pacifico', cursive;
+                color: #1a5276;
+                text-align: right;
+                margin-top: 2rem;
+            ">Forever yours,<br>Luiz</p>
+        </div>
+
+        <!-- Goals Section -->
+        <div class="goals-section">
+            <h2 style="font-family: 'Pacifico', cursive; color: #1a5276;">Our Shared Dreams 🌸</h2>
+            <ul class="goals-list" id="goalsList"></ul>
+            <button onclick="addNewGoal()" style="
+                background: #1a5276;
+                color: white;
+                padding: 12px 30px;
+                border: none;
+                border-radius: 8px;
+                margin-top: 1rem;
+                cursor: pointer;
+            ">+ Add New Dream</button>
+        </div>
+    </div>
+
+    <script>
+        // Password System
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value.toLowerCase().trim();
+            const errorElement = document.getElementById('errorMessage');
+
+            if(password === 'bittermelon') {
+                document.querySelector('.password-page').style.display = 'none';
+                document.querySelector('.main-content').style.display = 'block';
+                loadGoals();
+            } else {
+                errorElement.style.display = 'block';
+                errorElement.style.animation = 'shake 0.5s';
+                setTimeout(() => errorElement.style.animation = '', 500);
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+
+        // Goal System
+        function saveGoals() {
+            const goals = Array.from(document.querySelectorAll('.goals-list li')).map(li => {
+                return li.querySelector('label').textContent;
+            });
+            localStorage.setItem('ourGoals', JSON.stringify(goals));
+        }
+
+        function loadGoals() {
+            const goals = JSON.parse(localStorage.getItem('ourGoals')) || [];
+            const list = document.getElementById('goalsList');
+            list.innerHTML = goals.map((goal, index) => `
+                <li>
+                    <input type="checkbox" id="goal${index}">
+                    <label for="goal${index}">${goal}</label>
+                    <span style="color: #ff6b6b; margin-left: auto;">❤️</span>
+                </li>
+            `).join('');
+        }
+
+        function addNewGoal() {
+            const goal = prompt("What's our new dream?");
+            if(goal) {
+                const list = document.getElementById('goalsList');
+                const newItem = document.createElement('li');
+                const goalId = list.children.length;
+                
+                newItem.innerHTML = `
+                    <input type="checkbox" id="goal${goalId}">
+                    <label for="goal${goalId}">${goal}</label>
+                    <span style="color: #ff6b6b; margin-left: auto;">❤️</span>
+                `;
+                list.appendChild(newItem);
+                saveGoals();
+            }
+        }
+
+        // Load goals on page load
+        window.addEventListener('load', loadGoals);
+    </script>
 </body>
 </html>
