@@ -93,13 +93,29 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .delete-btn {
+            margin-left: auto;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .goals-list li:hover .delete-btn {
+            opacity: 1;
         }
 
         /* Animations */
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(-20px); }
         }
     </style>
 </head>
@@ -128,11 +144,7 @@
         <div class="love-letter">
             <h2 style="font-family: 'Pacifico', cursive; color: #1a5276;">My Dearest Lalaine,</h2>
             <div class="letter-content">
-               Even though we just met, it feels like I’ve known you for many years, and I think that’s why we match so beautifully—even from thousands of miles away. Who knows, maybe we met in a past life on a tiny farm :)  Every time you talk about your goals, all I know is that you will accomplish them all and bring your five Mingkoys (who clearly run your world) with you. Your dream of a tiny farm where you can grow all types of plants and vegetables and heal wounded stray animals, or how you light up when planning your sociology projects to help others, reminds me that love isn’t just a feeling. It’s the quiet hope of building a life with someone special. And something tells me you are very special.</p>
-
-            <p>I imagine one day in the Farm: a little house painted light blue, like the sky after a monsoon, with the Mingkoys napping in a sunbeam while we argue over whether Swiss goats or Hong Kong street cats have better personalities. But more than the places, I crave the *moments*—the someday-morning when I’ll bring you coffee (no bitter melon in sight, promise) and watch you scribble plans for a community garden or laugh at your phone because the Mingkoys knocked over another plant. You’re the kind of person who turns dreams into action, and if I’m lucky enough to hopefully one day stand beside you in the future, I’ll spend every day making sure you never doubt how extraordinary you are.</p>
-
-            <p>Until then, I’ll keep saving your voice notes like secrets and wondering how your smile looks in sunlight instead of pixels.
+                <!-- PASTE YOUR LOVE LETTER HERE -->
                 <p>From the moment we first spoke, I knew you were someone special...</p>
             </div>
             <p style="
@@ -192,7 +204,7 @@
                 <li>
                     <input type="checkbox" id="goal${index}">
                     <label for="goal${index}">${goal}</label>
-                    <span style="color: #ff6b6b; margin-left: auto;">❤️</span>
+                    <button class="delete-btn" onclick="deleteGoal(${index})">Delete</button>
                 </li>
             `).join('');
         }
@@ -207,11 +219,23 @@
                 newItem.innerHTML = `
                     <input type="checkbox" id="goal${goalId}">
                     <label for="goal${goalId}">${goal}</label>
-                    <span style="color: #ff6b6b; margin-left: auto;">❤️</span>
+                    <button class="delete-btn" onclick="deleteGoal(${goalId})">Delete</button>
                 `;
                 list.appendChild(newItem);
                 saveGoals();
             }
+        }
+
+        function deleteGoal(index) {
+            const list = document.getElementById('goalsList');
+            const goalItem = list.children[index];
+            
+            // Fade-out animation
+            goalItem.style.animation = 'fadeOut 0.3s ease';
+            setTimeout(() => {
+                goalItem.remove();
+                saveGoals();
+            }, 300);
         }
 
         // Load goals on page load
